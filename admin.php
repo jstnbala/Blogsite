@@ -73,8 +73,7 @@
         font-weight: bold;
     }
 
-</style>
-
+    </style>
 </head>
 <body>
     <h2>Admin Dashboard</h2>
@@ -103,45 +102,23 @@
     }
 
     // Fetch user accounts from tblAccounts
-    $sql = "SELECT id, username, email FROM tblAccounts";
-    $result = $conn->query($sql);
+    $userSql = "SELECT id, username, email FROM tblAccounts";
+    $userResult = $conn->query($userSql);
 
     // Get user count
-    $userCount = $result->num_rows;
+    $userCount = $userResult->num_rows;
+
+    // Fetch comments from tblComments
+    $commentSql = "SELECT id, account_id, comment_text FROM tblComments";
+    $commentResult = $conn->query($commentSql);
 
     if ($userCount > 0) {
-        echo "<table border='1'>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>";
-
-        // Output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo "
-                <tr>
-                    <td>" . $row["id"] . "</td>
-                    <td>" . $row["username"] . "</td>
-                    <td>" . $row["email"] . "</td>
-                    <td>
-                        <a href='edit.php?id=" . $row["id"] . "'>Edit</a> |
-                        <a href='delete.php?id=" . $row["id"] . "'>Delete</a>
-                    </td>
-                </tr>";
-        }
-
-        echo "</table>";
-
-        // Display user count
-        echo "<p>User Count: $userCount</p>";
-
         // Close the database connection
         $conn->close(); 
 
         // Script for Chart.js pie chart
-        echo "<div id='chart-container'><canvas id='userChart' width='300' height='300'></canvas></div>";
+        echo "<div id='chart-container'><canvas id='userChart' width='500' height='200'></canvas></div>";
+        echo "<p>User Count: $userCount</p>";
         echo "<script>
             var ctx = document.getElementById('userChart').getContext('2d');
             var userChart = new Chart(ctx, {
@@ -152,12 +129,12 @@
                         label: 'Number of Users',
                         data: [$userCount],
                         backgroundColor: [
-                            '#F5E8C7',
+                            '#F0EBCE',
                         ],
                         borderColor: [
-                            '#363062',
+                            '#AA8B56',
                         ],
-                        borderWidth: 3
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -166,6 +143,18 @@
                 }
             });
         </script>";
+
+        // Display comments in a table
+        echo "<div class='table-container'>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>User ID</th><th>Comment</th></tr>";
+        while ($row = $commentResult->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>{$row['id']}</td><td>{$row['account_id']}</td><td>{$row['comment_text']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "</div>";
     } else {
         echo "0 results";
         // Close the database connection
@@ -173,10 +162,21 @@
     }
     ?>
 
-    <!-- Add Logout button -->
-    <form action="logout.php" method="post">
-        <input class="btn btn-primary" type="submit" value="Logout">
-    </form>
+    <!-- Add Account Management and Back to Account Management buttons with updated styles -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <form action="home.php" method="get">
+                    <input class="btn btn-secondary" type="submit" value="Back">
+                </form>
+            </div>
+            <div class="col">
+                <form action="account.php" method="get">
+                    <input class="btn btn-primary" type="submit" value="Account Management">
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

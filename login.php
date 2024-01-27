@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Welcome User, Sign In</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -96,27 +96,28 @@
             die("Connection failed: " . $conn->connect_error);
         }
  
-        // Check login credentials
-        $sql = "SELECT id, username, password FROM tblAccounts WHERE username='$username'";
-        $result = $conn->query($sql);
- 
+        // Check login credentials using prepared statements
+        $stmt = $conn->prepare("SELECT id, username, password FROM tblAccounts WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
- 
+
             // Verify password
             if (password_verify($password, $row["password"])) {
                 // Start a session and store user ID
                 session_start();
                 $_SESSION["user_id"] = $row["id"];
- 
-                // Redirect to admin dashboard
-                header("Location: admin.php");
+
+                header("Location: home.php");
                 exit();
             } else {
-                echo '<p style="color: #F5E8C7;">Invalid password</p>';
+                echo '<script>alert("Invalid password");</script>';
             }
         } else {
-            echo '<p style="color: #F5E8C7;">Invalid username</p>';
+            echo '<script>alert("Invalid username");</script>';
         }
  
         $conn->close();
@@ -132,7 +133,7 @@
         <input type="password" name="password" required><br>
  
         <input type="submit" value="Login">
-        <a href="index.php">Click Here to Register</a>
+        <a href="index.php">Create an account</a>
     </form>
 </body>
 </html>
