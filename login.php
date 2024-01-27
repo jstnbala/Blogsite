@@ -9,21 +9,22 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #E5D2B8;
+            background-image: url("images/bgcool.jpg");
+            background-size: cover;
             text-align: center;
             margin: 50px;
             padding: 50px;
         }
 
         h2 {
-            color:black;
+            color:#F5E8C7;
         }
 
         form {
             width: 300px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #E5E0D8;
+            background-color: #F2F7A1;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -31,7 +32,9 @@
         label {
             display: block;
             margin: 10px 0 5px;
-            color: #333;
+            color: #435585;
+            font-weight: bold;
+            text-align: left;
         }
 
         input {
@@ -43,18 +46,35 @@
         }
 
         input[type="submit"] {
-            background-color: #D2AB80;
+            background-color: #435585;
             color: #fff;
             cursor: pointer;
+            font-family: 'Poppins', sans-serif;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        a {
+        display: inline-block;
+        padding: 10px 80px;
+        background-color: #435585;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        border-radius: 4px;
+        font-family: 'Poppins', sans-serif;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #45a049;
+    }
     </style>
 </head>
 <body>
-    <h2>Login</h2>
+    <h2>Welcome User, Sign In</h2>
  
     <?php
     // Check if the form is submitted
@@ -93,10 +113,10 @@
                 header("Location: admin.php");
                 exit();
             } else {
-                echo "Invalid password";
+                echo '<p style="color: #F5E8C7;">Invalid password</p>';
             }
         } else {
-            echo "Invalid username";
+            echo '<p style="color: #F5E8C7;">Invalid username</p>';
         }
  
         $conn->close();
@@ -112,7 +132,7 @@
         <input type="password" name="password" required><br>
  
         <input type="submit" value="Login">
-        <a href="index.php">Create an account</a>
+        <a href="index.php">Click Here to Register</a>
     </form>
 </body>
 </html>

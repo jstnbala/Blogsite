@@ -12,7 +12,8 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #B3B792;
+            background-image: url("images/bgcool.jpg");
+            background-size: cover;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -28,7 +29,7 @@
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: #E5E0D8;
+            background-color: #FAE7F3;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -38,17 +39,18 @@
         }
 
         th {
-            background-color: #809671;
-            color: #fff;
+            background-color: #E6B9DE;
+            color: #363062;
         }
 
         tr:hover {
-            background-color: #f5f5f5;
+            background-color: #F5E8C7;
         }
 
         a {
             text-decoration: none;
             color: #333;
+            
         }
 
         a:hover {
@@ -58,12 +60,17 @@
         /* Set a max-width for the chart container */
         #chart-container {
             max-width: 500px;
-            margin: 20px auto;            
+            margin: 20px auto;         
+            background-color: #FAE7F3;   
+            padding-bottom: 12px;
+            border-radius: 25px;
         }
 
         .btn-primary {
-        background-color: #725C3A;
+        background-color: #F5E8C7;
         border-color: #725C3A;
+        color: #363062;
+        font-weight: bold;
     }
 
 </style>
@@ -145,12 +152,12 @@
                         label: 'Number of Users',
                         data: [$userCount],
                         backgroundColor: [
-                            '#E5D2B8',
+                            '#F5E8C7',
                         ],
                         borderColor: [
-                            '#AA8B56',
+                            '#363062',
                         ],
-                        borderWidth: 1
+                        borderWidth: 3
                     }]
                 },
                 options: {
