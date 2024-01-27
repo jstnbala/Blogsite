@@ -7,14 +7,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         body {
             font-family: Poppins, sans-serif;
-            background-color: #E5D2B8;
+            background-image: url("images/bgcool.jpg");
+            background-size: cover;
             margin: 20px;
         }
 
         form {
             max-width: 400px;
             margin: 20px auto;
-            background-color: #E5E0D8;
+            background-color: #F2F7A1;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -23,6 +24,8 @@
         label {
             display: block;
             margin-bottom: 8px;
+            color: #435585;
+            font-weight: bold;
         }
 
         input {
@@ -35,9 +38,10 @@
         }
 
         input[type="submit"] {
-            background-color: #D2AB80;
+            background-color: #435585;
             color: #fff;
             cursor: pointer;
+            font-family: 'Poppins';
         }
 
         input[type="submit"]:hover {

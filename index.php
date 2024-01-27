@@ -7,7 +7,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         body {
             font-family: Poppins, sans-serif;
-            background-color: #E5D2B8;
+            background-image: url("images/bgcool.jpg");
+            background-size: cover;
             margin: 50px;
             padding: 50px;
             display: flex;
@@ -18,7 +19,7 @@
 
         h2 {
             text-align: center;
-            color: black;
+            color: #F5E8C7;
         }
 
         form {
@@ -27,7 +28,7 @@
             max-width: 400px;
             width: 100%;
             padding: 20px;
-            background-color: #E5E0D8;
+            background-color: #F2F7A1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             box-sizing: border-box;
@@ -36,7 +37,8 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
+            color: #435585;
+            font-weight: bold;
         }
 
         input {
@@ -66,7 +68,7 @@
         }
 
         input[type="submit"] {
-            background-color: #D2AB80;
+            background-color: #435585;
             color: #fff;
             margin-right: 5px;
         }
@@ -76,7 +78,7 @@
         }
 
         input[type="button"] {
-            background-color: #D2AB80;
+            background-color: #435585;
             color: #fff;
         }
 
@@ -100,7 +102,7 @@
         <input type="email" name="email" required>
 
         <div class="button-container">
-        <input type="submit" value="Register">
+        <input type="submit" value="Create">
             <input type="button" value="Back" onclick="location.href='login.php';">
         </div>
     </form>

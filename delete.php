@@ -6,7 +6,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #E5D2B8;
+            background-image: url("images/bgcool.jpg");
+            background-size: cover;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -35,7 +36,7 @@
         }
 
         #backButton {
-            background-color: #D2AB80;
+            background-color: #435585;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -69,7 +70,7 @@
         $sql = "DELETE FROM tblAccounts WHERE id=$id";
      
         if ($conn->query($sql) === TRUE) {
-            echo "<div class='success'>Record deleted successfully</div>";
+            echo "<div class='success'>Record Deleted Successfully</div>";
         } else {
             echo "<div class='error'>Error deleting record: " . $conn->error . "</div>";
         }
